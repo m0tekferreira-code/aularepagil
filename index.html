@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula: Hospedagem, DNS e Cloudflare</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="markdown-body">
+        <h1>Aula: Hospedagem, DNS e Cloudflare</h1>
+        <p><strong>Programação com IA - 30 minutos</strong></p>
+
+        <div class="alert alert-note">
+            <div class="alert-title">🎯 Objetivos da Aula</div>
+            <p>Ao final desta aula, você será capaz de:</p>
+            <ul>
+                <li>Hospedar uma aplicação web</li>
+                <li>Configurar um domínio personalizado</li>
+                <li>Utilizar o Cloudflare para melhorar performance e segurança</li>
+            </ul>
+        </div>
+
+        <h2>📚 Parte 1: Hospedagem (10 min)</h2>
+
+        <h3>O que é Hospedagem?</h3>
+        <p>Hospedar significa colocar seu site/aplicação em um servidor conectado à internet 24/7 para que qualquer pessoa possa acessar.</p>
+
+        <h3>Principais Opções de Hospedagem</h3>
+
+        <h4>1. Vercel (Recomendado para iniciantes)</h4>
+        <ul>
+            <li>✅ Gratuito para projetos pessoais</li>
+            <li>✅ Deploy automático via Git</li>
+            <li>✅ Ideal para: React, Next.js, Vue, HTML/CSS/JS</li>
+        </ul>
+        <p><strong>Como hospedar:</strong></p>
+        <pre><code># Instalar Vercel CLI
+npm i -g vercel
+
+# Na pasta do projeto
+vercel login
+vercel</code></pre>
+
+        <h4>2. Netlify</h4>
+        <ul>
+            <li>✅ Gratuito</li>
+            <li>✅ Drag-and-drop de pastas</li>
+            <li>✅ Ideal para: Sites estáticos, SPAs</li>
+        </ul>
+
+        <h4>3. Railway / Render</h4>
+        <ul>
+            <li>✅ Suporta backend (Node.js, Python, etc)</li>
+            <li>✅ Banco de dados incluído</li>
+            <li>✅ Plano gratuito limitado</li>
+        </ul>
+
+        <h4>4. GitHub Pages</h4>
+        <ul>
+            <li>✅ Totalmente gratuito</li>
+            <li>✅ Integrado com GitHub</li>
+            <li>✅ Ideal para: Portfólios, documentação</li>
+        </ul>
+
+        <h3>🎬 Demo Prática</h3>
+        <p>Vamos hospedar um projeto simples no Vercel:</p>
+        <ol>
+            <li>Criar conta no Vercel</li>
+            <li>Conectar repositório GitHub</li>
+            <li>Deploy automático</li>
+            <li>Projeto no ar em 2 minutos!</li>
+        </ol>
+
+        <hr>
+
+        <h2>📚 Parte 2: Domínios e DNS (10 min)</h2>
+
+        <h3>O que é um Domínio?</h3>
+        <p>É o endereço do seu site (ex: <code>meusite.com.br</code>).</p>
+
+        <h3>Onde Comprar Domínios?</h3>
+        <ul>
+            <li><strong>Registro.br</strong> (<code>.com.br</code>) - R$ 40/ano</li>
+            <li><strong>Namecheap</strong> - A partir de $8/ano</li>
+            <li><strong>GoDaddy</strong> - Várias opções</li>
+        </ul>
+
+        <h3>O que é DNS?</h3>
+        <p>DNS (Domain Name System) traduz nomes legíveis em endereços IP.<br>
+        <code>meusite.com.br</code> → <code>192.168.1.1</code> (servidor)</p>
+
+        <h3>Como Apontar um Domínio</h3>
+        <p><strong>Registros DNS Principais:</strong></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Função</th>
+                    <th>Exemplo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>A</td>
+                    <td>Aponta para um IP</td>
+                    <td><code>185.199.108.153</code></td>
+                </tr>
+                <tr>
+                    <td>CNAME</td>
+                    <td>Aponta para outro domínio</td>
+                    <td><code>cname.vercel-dns.com</code></td>
+                </tr>
+                <tr>
+                    <td>MX</td>
+                    <td>Servidores de email</td>
+                    <td><code>mail.google.com</code></td>
+                </tr>
+                <tr>
+                    <td>TXT</td>
+                    <td>Verificações e configs</td>
+                    <td><code>verification=abc123</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>Configuração Típica (Vercel):</h4>
+        <p><strong>No painel do provedor de domínio:</strong></p>
+        <ol>
+            <li>Adicionar registro A:
+                <ul>
+                    <li>Nome: <code>@</code></li>
+                    <li>Valor: <code>76.76.21.21</code></li>
+                </ul>
+            </li>
+            <li>Adicionar registro CNAME:
+                <ul>
+                    <li>Nome: <code>www</code></li>
+                    <li>Valor: <code>cname.vercel-dns.com</code></li>
+                </ul>
+            </li>
+        </ol>
+        <p><strong>No Vercel:</strong></p>
+        <ol>
+            <li>Settings → Domains</li>
+            <li>Adicionar domínio customizado</li>
+            <li>Seguir instruções de verificação</li>
+        </ol>
+
+        <div class="alert alert-warning">
+            <div class="alert-title">⏰ Importante</div>
+            <p><strong>Propagação DNS:</strong> Pode levar de 5 minutos a 48 horas.</p>
+        </div>
+
+        <hr>
+
+        <h2>🚀 Parte 3: Cloudflare (10 min)</h2>
+
+        <h3>O que é Cloudflare?</h3>
+        <p>É uma CDN (Content Delivery Network) que fica entre seus visitantes e seu servidor, oferecendo:</p>
+        <ul>
+            <li>🚀 Performance (cache global)</li>
+            <li>🛡 Segurança (proteção DDoS)</li>
+            <li>🔒 SSL/HTTPS gratuito</li>
+            <li>📊 Analytics</li>
+        </ul>
+
+        <h3>Por que usar Cloudflare?</h3>
+        <ul>
+            <li><strong>Sem Cloudflare:</strong> Visitante → Servidor (pode estar longe, lento)</li>
+            <li><strong>Com Cloudflare:</strong> Visitante → Servidor Cloudflare mais próximo → Seu servidor (cache, proteção, SSL)</li>
+        </ul>
+
+        <h3>Como Configurar Cloudflare</h3>
+        <p><strong>Passo 1: Criar conta</strong><br>
+        Acessar <a href="https://cloudflare.com">cloudflare.com</a>. Plano Free é suficiente.</p>
+
+        <p><strong>Passo 2: Adicionar site</strong></p>
+        <ol>
+            <li>Clicar em "Add a Site"</li>
+            <li>Digitar seu domínio</li>
+            <li>Cloudflare vai escanear registros DNS existentes</li>
+        </ol>
+
+        <p><strong>Passo 3: Mudar Nameservers</strong><br>
+        No seu provedor de domínio, trocar os nameservers para:</p>
+        <ul>
+            <li><code>alina.ns.cloudflare.com</code></li>
+            <li><code>scott.ns.cloudflare.com</code></li>
+        </ul>
+        <p>(Os nomes variam, Cloudflare mostra os corretos)</p>
+
+        <p><strong>Passo 4: Configurar no Cloudflare</strong></p>
+        <ul>
+            <li>SSL/TLS: Deixar em "Full" ou "Flexible"</li>
+            <li>Always Use HTTPS: Ativar</li>
+            <li>Auto Minify: Ativar (JS, CSS, HTML)</li>
+            <li>Brotli: Ativar</li>
+        </ul>
+
+        <h3>Recursos Úteis do Cloudflare</h3>
+        <ol>
+            <li><strong>Page Rules (3 grátis):</strong>
+                <ul>
+                    <li>Criar regras personalizadas.</li>
+                    <li>Ex: <code>meusite.com.br/admin/*</code> → Desabilitar cache → Security Level: High</li>
+                </ul>
+            </li>
+            <li><strong>Firewall:</strong> Bloquear países, IPs, bot maliciosos.</li>
+            <li><strong>Analytics:</strong> Ver tráfego, ameaças bloqueadas, performance.</li>
+            <li><strong>Workers (opcional):</strong> Código serverless que roda na edge.</li>
+        </ol>
+
+        <hr>
+
+        <h2>🎯 Fluxo Completo: Do Código ao Ar</h2>
+        <pre><code>1. Desenvolver projeto localmente
+    ↓
+2. Subir código no GitHub
+    ↓
+3. Conectar GitHub com Vercel/Netlify
+    ↓
+4. Deploy automático → URL temporária
+    ↓
+5. Comprar domínio
+    ↓
+6. Configurar Cloudflare (opcional mas recomendado)
+    ↓
+7. Apontar domínio para hospedagem
+    ↓
+8. Site no ar com domínio próprio!</code></pre>
+
+        <hr>
+
+        <h2>💡 Dicas Importantes</h2>
+
+        <div class="alert alert-tip">
+            <div class="alert-title">✅ Boas Práticas</div>
+            <ul>
+                <li>Sempre use HTTPS (SSL)</li>
+                <li>Configure redirects de www para domínio raiz (ou vice-versa)</li>
+                <li>Teste o site em diferentes dispositivos após deploy</li>
+                <li>Configure variáveis de ambiente corretamente</li>
+                <li>Use <code>.gitignore</code> para não subir senhas/chaves</li>
+            </ul>
+        </div>
+
+        <div class="alert alert-warning">
+            <div class="alert-title">⚠ Erros Comuns</div>
+            <ul>
+                <li>Esquecer de fazer build antes do deploy</li>
+                <li>Variáveis de ambiente não configuradas no servidor</li>
+                <li>Caminho de arquivos incorreto (case-sensitive em Linux)</li>
+                <li>Não aguardar propagação DNS</li>
+                <li>Configurar SSL como "Strict" sem certificado no servidor</li>
+            </ul>
+        </div>
+
+        <h2>🔧 Comandos Úteis</h2>
+
+        <h3>Vercel CLI</h3>
+        <pre><code>vercel login          # Login
+vercel                # Deploy
+vercel --prod         # Deploy em produção
+vercel domains        # Gerenciar domínios
+vercel env            # Gerenciar variáveis de ambiente</code></pre>
+
+        <h3>Netlify CLI</h3>
+        <pre><code>netlify login         # Login
+netlify init          # Configurar projeto
+netlify deploy        # Deploy preview
+netlify deploy --prod # Deploy produção</code></pre>
+
+        <hr>
+
+        <h2>📖 Recursos Adicionais</h2>
+        <h3>Documentação</h3>
+        <ul>
+            <li><a href="#">Vercel Docs</a></li>
+            <li><a href="#">Netlify Docs</a></li>
+            <li><a href="#">Cloudflare Learning Center</a></li>
+        </ul>
+
+        <h3>Ferramentas de Teste</h3>
+        <ul>
+            <li><strong>DNS Checker</strong> - Verificar propagação DNS</li>
+            <li><strong>GTmetrix</strong> - Testar performance</li>
+            <li><strong>SSL Labs</strong> - Testar configuração SSL</li>
+        </ul>
+
+        <hr>
+
+        <h2>🎓 Exercício Prático</h2>
+        <div class="alert alert-note">
+            <div class="alert-title">Desafio para os estagiários:</div>
+            <ol>
+                <li>Criar um site simples (HTML/CSS/JS)</li>
+                <li>Fazer deploy no Vercel ou Netlify</li>
+                <li>Configurar domínio próprio (pode usar subdomínio grátis primeiro)</li>
+                <li>(Bônus) Adicionar Cloudflare</li>
+            </ol>
+            <p><strong>Tempo estimado:</strong> 20-30 minutos</p>
+        </div>
+
+        <h2>❓ Perguntas Frequentes</h2>
+        <p><strong>P: Preciso pagar por hospedagem para aprender?</strong><br>
+        R: Não! Vercel, Netlify e GitHub Pages são gratuitos para projetos pessoais.</p>
+
+        <p><strong>P: Quanto custa um domínio?</strong><br>
+        R: .com.br = ~R$ 40/ano | .com = ~$10-15/ano</p>
+
+        <p><strong>P: Cloudflare é obrigatório?</strong><br>
+        R: Não, mas é altamente recomendado (e grátis!).</p>
+
+        <p><strong>P: Posso hospedar backend (Node.js, Python)?</strong><br>
+        R: Sim! Use Vercel (serverless functions), Railway, ou Render.</p>
+
+        <p><strong>P: Como faço para atualizar o site?</strong><br>
+        R: Faça commit no GitHub. O deploy é automático!</p>
+
+        <hr>
+
+        <h2>📝 Resumo de 3 Pontos</h2>
+        <ol>
+            <li><strong>Hospedagem:</strong> Vercel/Netlify para frontend são gratuitos e fáceis</li>
+            <li><strong>Domínio:</strong> Compre onde preferir, aponte com registros A/CNAME</li>
+            <li><strong>Cloudflare:</strong> Acelera, protege e adiciona SSL gratuito</li>
+        </ol>
+
+        <h2>🎤 Encerramento</h2>
+        <p>Agora vocês têm todo conhecimento necessário para colocar projetos no ar!</p>
+        <p><strong>Próximos passos:</strong></p>
+        <ul>
+            <li>Experimentem hospedar um projeto hoje mesmo</li>
+            <li>Testem diferentes plataformas</li>
+            <li>Compartilhem seus projetos no ar!</li>
+        </ul>
+        <p><em>Dúvidas? Vamos para a prática!</em></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,164 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 16px;
+    line-height: 1.5;
+    word-wrap: break-word;
+    margin: 0;
+    padding: 2rem;
+    background-color: #0d1117; /* GitHub Dark Dimmed bg roughly, or white if preferring light. Let's go generic light for "classic" or ask? User just said "Github style". Usually implies the readme look. Let's do Light mode as it's safer/default. */
+    background-color: #ffffff;
+    color: #24292f;
+}
+
+.markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 45px;
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    background-color: #ffffff;
+}
+
+@media (max-width: 767px) {
+    .markdown-body {
+        padding: 15px;
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+h1 {
+    font-size: 2em;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid #d0d7de;
+}
+
+h2 {
+    font-size: 1.5em;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid #d0d7de;
+}
+
+h3 {
+    font-size: 1.25em;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+code {
+    font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+    font-size: 85%;
+    padding: 0.2em 0.4em;
+    margin: 0;
+    background-color: #afb8c133;
+    border-radius: 6px;
+}
+
+pre {
+    padding: 16px;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f6f8fa;
+    border-radius: 6px;
+}
+
+pre code {
+    background-color: transparent;
+    padding: 0;
+    white-space: pre;
+    word-break: normal;
+}
+
+ul {
+    padding-left: 2em;
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+li {
+    margin-top: 0.25em;
+}
+
+/* Custom Alert/Box Styles to mimic "Objectives" and "Tips" */
+.alert {
+    padding: 16px;
+    margin-bottom: 16px;
+    border-left: 0.25em solid;
+    border-radius: 0 6px 6px 0;
+}
+
+.alert-note {
+    background-color: #ddf4ff;
+    border-color: #0969da;
+    color: #0969da; /* keeping text simpler or dark? GitHub alerts use regular text color usually with an icon. */
+    color: #24292f;
+}
+
+.alert-tip {
+    background-color: #dafbe1;
+    border-color: #1a7f37;
+    color: #24292f;
+}
+
+.alert-warning {
+    background-color: #fff8c5;
+    border-color: #9a6700;
+    color: #24292f;
+}
+
+.alert-title {
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+a {
+    color: #0969da;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+hr {
+    height: 0.25em;
+    padding: 0;
+    margin: 24px 0;
+    background-color: #d0d7de;
+    border: 0;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+table th, table td {
+    padding: 6px 13px;
+    border: 1px solid #d0d7de;
+}
+
+table tr {
+    background-color: #ffffff;
+    border-top: 1px solid #d0d7de;
+}
+
+table tr:nth-child(2n) {
+    background-color: #f6f8fa;
+}
