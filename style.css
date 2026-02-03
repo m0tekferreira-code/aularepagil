@@ -5,7 +5,8 @@ body {
     word-wrap: break-word;
     margin: 0;
     padding: 2rem;
-    background-color: #0d1117; /* GitHub Dark Dimmed bg roughly, or white if preferring light. Let's go generic light for "classic" or ask? User just said "Github style". Usually implies the readme look. Let's do Light mode as it's safer/default. */
+    background-color: #0d1117;
+    /* GitHub Dark Dimmed bg roughly, or white if preferring light. Let's go generic light for "classic" or ask? User just said "Github style". Usually implies the readme look. Let's do Light mode as it's safer/default. */
     background-color: #ffffff;
     color: #24292f;
 }
@@ -27,7 +28,12 @@ body {
     }
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     margin-top: 24px;
     margin-bottom: 16px;
     font-weight: 600;
@@ -101,7 +107,8 @@ li {
 .alert-note {
     background-color: #ddf4ff;
     border-color: #0969da;
-    color: #0969da; /* keeping text simpler or dark? GitHub alerts use regular text color usually with an icon. */
+    color: #0969da;
+    /* keeping text simpler or dark? GitHub alerts use regular text color usually with an icon. */
     color: #24292f;
 }
 
@@ -149,7 +156,8 @@ table {
     margin-bottom: 16px;
 }
 
-table th, table td {
+table th,
+table td {
     padding: 6px 13px;
     border: 1px solid #d0d7de;
 }
@@ -161,4 +169,81 @@ table tr {
 
 table tr:nth-child(2n) {
     background-color: #f6f8fa;
+}
+
+/* Form Styles */
+.form-container {
+    background-color: #f6f8fa;
+    padding: 16px;
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    margin-bottom: 16px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.form-control {
+    width: 100%;
+    padding: 5px 12px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #24292f;
+    vertical-align: middle;
+    background-color: #ffffff;
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    box-shadow: inset 0 1px 0 rgba(208, 215, 222, 0.2);
+    transition: 80ms cubic-bezier(0.33, 1, 0.68, 1);
+    transition-property: color, background-color, box-shadow, border-color;
+    box-sizing: border-box;
+    /* Fix width overflow */
+}
+
+.form-control:focus {
+    border-color: #0969da;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.3);
+}
+
+.btn {
+    display: inline-block;
+    padding: 5px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid;
+    border-radius: 6px;
+    appearance: none;
+}
+
+.btn-primary {
+    color: #ffffff;
+    background-color: #1f883d;
+    border-color: rgba(27, 31, 35, 0.15);
+    box-shadow: 0 1px 0 rgba(27, 31, 35, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.btn-primary:hover {
+    background-color: #1a7f37;
+}
+
+.btn-primary:active {
+    background-color: #187232;
+    /* Slightly darker for active/click */
+    box-shadow: inset 0 1px 0 rgba(27, 31, 35, 0.1);
+    /* Inset shadow for depth */
 }

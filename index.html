@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aula: Hospedagem, DNS e Cloudflare</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="markdown-body">
         <h1>Aula: Hospedagem, DNS e Cloudflare</h1>
@@ -24,7 +26,8 @@
         <h2>📚 Parte 1: Hospedagem (10 min)</h2>
 
         <h3>O que é Hospedagem?</h3>
-        <p>Hospedar significa colocar seu site/aplicação em um servidor conectado à internet 24/7 para que qualquer pessoa possa acessar.</p>
+        <p>Hospedar significa colocar seu site/aplicação em um servidor conectado à internet 24/7 para que qualquer
+            pessoa possa acessar.</p>
 
         <h3>Principais Opções de Hospedagem</h3>
 
@@ -88,7 +91,8 @@ vercel</code></pre>
 
         <h3>O que é DNS?</h3>
         <p>DNS (Domain Name System) traduz nomes legíveis em endereços IP.<br>
-        <code>meusite.com.br</code> → <code>192.168.1.1</code> (servidor)</p>
+            <code>meusite.com.br</code> → <code>192.168.1.1</code> (servidor)
+        </p>
 
         <h3>Como Apontar um Domínio</h3>
         <p><strong>Registros DNS Principais:</strong></p>
@@ -168,12 +172,13 @@ vercel</code></pre>
         <h3>Por que usar Cloudflare?</h3>
         <ul>
             <li><strong>Sem Cloudflare:</strong> Visitante → Servidor (pode estar longe, lento)</li>
-            <li><strong>Com Cloudflare:</strong> Visitante → Servidor Cloudflare mais próximo → Seu servidor (cache, proteção, SSL)</li>
+            <li><strong>Com Cloudflare:</strong> Visitante → Servidor Cloudflare mais próximo → Seu servidor (cache,
+                proteção, SSL)</li>
         </ul>
 
         <h3>Como Configurar Cloudflare</h3>
         <p><strong>Passo 1: Criar conta</strong><br>
-        Acessar <a href="https://cloudflare.com">cloudflare.com</a>. Plano Free é suficiente.</p>
+            Acessar <a href="https://cloudflare.com">cloudflare.com</a>. Plano Free é suficiente.</p>
 
         <p><strong>Passo 2: Adicionar site</strong></p>
         <ol>
@@ -183,7 +188,7 @@ vercel</code></pre>
         </ol>
 
         <p><strong>Passo 3: Mudar Nameservers</strong><br>
-        No seu provedor de domínio, trocar os nameservers para:</p>
+            No seu provedor de domínio, trocar os nameservers para:</p>
         <ul>
             <li><code>alina.ns.cloudflare.com</code></li>
             <li><code>scott.ns.cloudflare.com</code></li>
@@ -302,21 +307,55 @@ netlify deploy --prod # Deploy produção</code></pre>
             <p><strong>Tempo estimado:</strong> 20-30 minutos</p>
         </div>
 
+        <hr>
+
+        <h2>📤 Entrega de Projeto</h2>
+        <p>Preencha formulário abaixo para registrar a conclusão do seu desafio.</p>
+
+        <div class="form-container">
+            <form id="project-form">
+                <div class="form-group">
+                    <label for="name">Nome Completo</label>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="Seu nome" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="seu@email.com"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="url">URL do Projeto (Vercel/Netlify)</label>
+                    <input type="url" id="url" name="url" class="form-control"
+                        placeholder="https://seu-projeto.vercel.app" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Enviar Projeto</button>
+            </form>
+            <div id="success-message" style="display: none;" class="alert alert-tip">
+                <div class="alert-title">🎉 Projeto Recebido!</div>
+                <p>Seu projeto foi registrado com sucesso. Parabéns!</p>
+            </div>
+        </div>
+
+        <hr>
+
         <h2>❓ Perguntas Frequentes</h2>
         <p><strong>P: Preciso pagar por hospedagem para aprender?</strong><br>
-        R: Não! Vercel, Netlify e GitHub Pages são gratuitos para projetos pessoais.</p>
+            R: Não! Vercel, Netlify e GitHub Pages são gratuitos para projetos pessoais.</p>
 
         <p><strong>P: Quanto custa um domínio?</strong><br>
-        R: .com.br = ~R$ 40/ano | .com = ~$10-15/ano</p>
+            R: .com.br = ~R$ 40/ano | .com = ~$10-15/ano</p>
 
         <p><strong>P: Cloudflare é obrigatório?</strong><br>
-        R: Não, mas é altamente recomendado (e grátis!).</p>
+            R: Não, mas é altamente recomendado (e grátis!).</p>
 
         <p><strong>P: Posso hospedar backend (Node.js, Python)?</strong><br>
-        R: Sim! Use Vercel (serverless functions), Railway, ou Render.</p>
+            R: Sim! Use Vercel (serverless functions), Railway, ou Render.</p>
 
         <p><strong>P: Como faço para atualizar o site?</strong><br>
-        R: Faça commit no GitHub. O deploy é automático!</p>
+            R: Faça commit no GitHub. O deploy é automático!</p>
 
         <hr>
 
@@ -337,5 +376,7 @@ netlify deploy --prod # Deploy produção</code></pre>
         </ul>
         <p><em>Dúvidas? Vamos para a prática!</em></p>
     </div>
+    <script src="script.js"></script>
 </body>
+
 </html>
